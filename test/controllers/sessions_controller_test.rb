@@ -6,5 +6,8 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     get sessions_new_url
     assert_response :success
   end
-
+  def destroy
+    log_out if logged_in?
+    redirect_to root_url
+  end
 end
