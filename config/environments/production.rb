@@ -88,34 +88,34 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  
-  # mailer
+  # mailgunの方
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  # host = 'https://vast-hamlet-50689.herokuapp.com'
   host = 'https://boiling-eyrie-10842.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
-     :port => 587,
-     :address => 'smtp.sendgrid.net',
-     :user_name => ENV['SENDGRID_USERNAME'],
-     :password => ENV['SENDGRID_PASSWORD'],
-     :domain => host,
-     :authentication => :plain,
-     :enable_starttls_auto => true
+    :port           => ENV['MAILGUN_SMTP_PORT'],
+    :address        => ENV['MAILGUN_SMTP_SERVER'],
+    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+    :domain         => host,
+    :authentication => :plain,
   }
-  # mailgunの方
-  # config.action_mailer.raise_delivery_errors = true
-  # config.action_mailer.delivery_method = :smtp
-  # host = 'https://vast-hamlet-50689.herokuapp.com/'
-  # config.action_mailer.default_url_options = { host: host }
-  #config.action_mailer.smtp_settings = {
-  #  :port           => ENV['MAILGUN_SMTP_PORT'],
-  #  :address        => ENV['MAILGUN_SMTP_SERVER'],
-  #  :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-  #  :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-  #  :domain         => host,
-  #  :authentication => :plain,
-  #}
-  # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 end
+  # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  
+  # mailer
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.perform_deliveries = true
+  # host = 'https://vast-hamlet-50689.herokuapp.com'違うAPP
+  #host = 'https://boiling-eyrie-10842.herokuapp.com'
+  #config.action_mailer.default_url_options = { host: host }
+  #ActionMailer::Base.smtp_settings = {
+     #:port => 587,
+     #:address => 'smtp.sendgrid.net',
+     #:user_name => ENV['SENDGRID_USERNAME'],
+     #:password => ENV['SENDGRID_PASSWORD'],
+     #:domain => host,
+     #:authentication => :plain,
+     #:enable_starttls_auto => true
+  #}
