@@ -92,7 +92,8 @@ Rails.application.configure do
   # mailer
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  host = 'https://vast-hamlet-50689.herokuapp.com/'
+  # host = 'https://vast-hamlet-50689.herokuapp.com'
+  host = 'https://boiling-eyrie-10842.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
      :port => 587,
