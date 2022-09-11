@@ -101,10 +101,12 @@ Rails.application.configure do
     :domain         => host,
     :authentication => :plain,
   }
+  
+  config.active_storage.service = :amazon
+  
 end
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  # アップロードされたファイルをAWSに保存する
-  config.active_storage.service = :amazon
+  # アップロードされたファイルをAWSに保存す
   # mailer
   #config.action_mailer.delivery_method = :smtp
   #config.action_mailer.perform_deliveries = true
