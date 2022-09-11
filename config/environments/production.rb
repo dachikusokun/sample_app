@@ -1,6 +1,6 @@
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
-
+  # アップロードされたファイルをAWSに保存する
+  config.active_storage.service = :amazon
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -101,9 +101,6 @@ Rails.application.configure do
     :domain         => host,
     :authentication => :plain,
   }
-  
-  config.active_storage.service = :amazon
-  
 end
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   # アップロードされたファイルをAWSに保存す
